@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { defaultDB } from './config/database';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { defaultDB } from './config/database';
     TaskModule,
   ],
   components: [],
+  controllers: [AppController],
 })
 export class AppModule {
 }
