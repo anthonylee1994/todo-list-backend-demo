@@ -43,6 +43,10 @@ export class TaskService {
     }
     async updateByItem(task: Partial<Task>): Promise<Task> {
 
+        if (!task) {
+            throw new NotFoundException();
+        }
+
         const found = await this.taskRepository.findOneById(task.id);
 
         if (!found) {

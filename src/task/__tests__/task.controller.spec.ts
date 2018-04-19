@@ -80,8 +80,10 @@ describe('TaskController', () => {
         return request(server)
             .patch('/tasks')
             .send({
-                id: 1,
-                name: 'Task X',
+                item: {
+                    id: 1,
+                    name: 'Task X',
+                },
             })
             .expect(HttpStatus.OK);
     });
@@ -89,16 +91,18 @@ describe('TaskController', () => {
     it('/PATCH tasks', () => {
         return request(server)
             .patch('/tasks')
-            .send([
-                {
-                    id: 1,
-                    name: 'Task X',
-                },
-                {
-                    id: 2,
-                    name: 'Task Y',
-                },
-            ])
+            .send({
+                items: [
+                    {
+                        id: 1,
+                        name: 'Task X',
+                    },
+                    {
+                        id: 2,
+                        name: 'Task Y',
+                    },
+                ],
+            })
             .expect(HttpStatus.OK);
     });
 

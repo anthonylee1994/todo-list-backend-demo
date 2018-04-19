@@ -14,7 +14,7 @@ export const testDB = {
     type: 'sqlite',
     database: 'test.db',
     entities: [
-        '../**/*.entity{.ts,.js}',
+        __dirname + '/../**/*.entity{.ts,.js}',
     ],
     synchronize: true,
     autoSchemaSync: true,

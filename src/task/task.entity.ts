@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { IsDate, IsInt, IsString, IsNotEmpty, IsDateString, IsEmpty, IsOptional } from 'class-validator';
+import { IsDate, IsInt, IsString, IsNotEmpty, IsDateString, IsEmpty, IsOptional, IsBoolean } from 'class-validator';
 
 @Entity()
 export class Task {
@@ -23,6 +23,14 @@ export class Task {
         nullable: true,
     })
     position: number;
+
+    @IsOptional()
+    @IsBoolean()
+    @Column({
+        type: 'boolean',
+        default: false,
+    })
+    completed: boolean;
 
     @CreateDateColumn()
     dateCreated: Date;

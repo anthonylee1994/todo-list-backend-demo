@@ -24,11 +24,11 @@ export class TaskController {
     }
 
     @Patch()
-    async update(@Body() task: Partial<Task> | Partial<Task>[]): Promise<Task | Task[]> {
-        if (Array.isArray(task)) {
-            return await this.taskService.updateByItems(task);
+    async update(@Body() body: { item?: Partial<Task>, items?: Partial<Task>[] }): Promise<Task | Task[]> {
+        if (body.items && Array.isArray(body.items)) {
+            return await this.taskService.updateByItems(body.items);
         } else {
-            return await this.taskService.updateByItem(task);
+            return await this.taskService.updateByItem(body.item);
         }
     }
 
